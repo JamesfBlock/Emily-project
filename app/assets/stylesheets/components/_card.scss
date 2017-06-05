@@ -1,0 +1,89 @@
+body {
+  background: #F2F2F2;
+  color: #B3B3B3;
+  a {
+    color: #B3B3B3;
+  }
+}
+
+.card {
+  margin-top: 20px;
+  border-radius: 2px;
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.09);
+  h2 {
+    margin-top: 0px;
+    font-size: 15px;
+  }
+  p {
+    margin: 0px;
+  }
+}
+
+.card:hover {
+  opacity: 0.8;
+  text-decoration: none;
+  a {
+    text-decoration: none;
+  }
+}
+
+.product-image {
+  height: 300px;
+  background-size: cover;
+  border-radius: 2px 2px 0 0;
+}
+
+.product-actions {
+  background: #ffffff;
+  padding: 10px;
+  border-top: solid #f2f2f2 1px;
+  height: 39px;
+  border-radius: 0px 0px 2px 2px;
+  p {
+    font-size: 12px
+  }
+}
+
+.product-company {
+  background: #ffffff;
+  padding: 0px 10px;
+  height: 30px;
+  p {
+    font-size: 15px;
+  }
+}
+
+.product-title {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  padding: 10px;
+  height: 40px;
+  h2 {
+    margin: 0px;
+    font-size: 25px;
+  }
+}
+
+.price {
+  background: orange;
+  padding: 10px;
+  min-width:66px;
+  float: right;
+  border-radius: 0px 2px 0px 2px;
+  p {
+    font-size: 18px;
+    color: white;
+    font-weight: 300;
+    text-align: center;
+  }
+}
+
+.product-actions {
+  text-align: right;
+  i {
+    font-size: 18px;
+    font-weight: 100;
+  }
+}
+
