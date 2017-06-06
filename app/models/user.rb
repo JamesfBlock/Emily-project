@@ -7,4 +7,15 @@ class User < ApplicationRecord
   has_many :products
   has_many :likes
 
+  # Attachinary associations
+  has_attachment :profile_picture
+  has_attachment :cover_photo
+
+  def get_picture
+    if profile_picture?
+      return profile_picture.path
+    else
+      return 'sample'
+    end
+  end
 end
