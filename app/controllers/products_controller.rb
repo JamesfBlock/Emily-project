@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
+    @current_user = current_user
   end
 
   def new
@@ -37,7 +38,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :company, :description, :category, :url, :featured, :price, :image_url, :emzy_comment)
+    params.require(:product).permit(:name, :company, :description, :category_id, :url, :featured, :price, :image_url, :emzy_comment)
   end
 
 end

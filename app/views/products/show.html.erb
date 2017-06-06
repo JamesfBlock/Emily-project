@@ -22,54 +22,40 @@
         </div>
       </div>
     </div>
-    <div class="row">
 
-    </div>
     <div class="row">
       <div class="product-summary">
         <h2 class="text-center padding-top" style="font-size: 22px;">Product Summary</h2>
-        <div class="col-lg-6 col-xs-12  text-center padding-top">
+        <div class="col-lg-6 col-lg-offset-3 col-xs-12  text-center padding-top">
           <div class="col-lg-4 product-summary-image border-right full-height">
             <p>Room</p>
-              <% if @product.category.to_i == 8 %>
+              <% if @product.category_id == Category.where(name:'Bedroom').first.id  %>
                 <%= image_tag('bed.png') %>
-              <% elsif @product.category.to_i == 9 %>
+              <% elsif @product.category_id == Category.where(name:'Kitchen').first.id %>
                 <%= image_tag('mixer.png') %>
-              <% elsif @product.category.to_i == 10 %>
+              <% elsif @product.category_id == Category.where(name:'Living Room').first.id %>
                 <%= image_tag('sofa.png') %>
-              <% elsif @product.category.to_i == 11 %>
+              <% elsif @product.category_id == Category.where(name:'Office').first.id %>
                 <%= image_tag('desk.png') %>
-              <% elsif @product.category.to_i == 12 %>
+              <% elsif @product.category_id == Category.where(name:'Bathroom').first.id %>
                 <%= image_tag('bathtub.png') %>
               <% end %>
           </div>
-          <div class="col-lg-4 col-xs-12 border-right">
-            <p>Affordability Scale</p>
-              <% if @product.price.to_i <= 100 %>
-                  <h1>High</h1>
-                <% elsif @product.price.to_i > 100 && @product.price.to_i <= 500  %>
-                  <h1>Medium</h1>
-                <% elsif @product.price.to_i > 500 %>
-                  <h1>Low</h1>
-              <% end %>
-          </div>
-          <div class="col-lg-4 col-xs-12 ">
-            <p>Likes</p>
-            <h1><%= @product.likes.to_i %></h1>
-          </div>
-           </div>
-          <div class="col-lg-6 col-xs-12 text-center padding-top">
-            <div class="advice-box">
-              <div class="advice-avitar">
-                <%= image_tag('emzy.PNG') %>
-              </div>
-              <div class="emzy-comment">
-                <p style="padding-top: 10px; font-size: 22px;"><u>Emzy's Advice</u></p>
-                <p><span style="font-size: 50px;">" </span><%= @product.emzy_comment %><span style="font-size: 50px;"> "</p>
-
-              </div>
-            </div>
-          </div>
+        <div class="col-lg-4 col-xs-12 border-right">
+          <p>Affordability Scale</p>
+            <% if @product.price.to_i <= 100 %>
+                <h1>High</h1>
+              <% elsif @product.price.to_i > 100 && @product.price.to_i <= 500  %>
+                <h1>Medium</h1>
+              <% elsif @product.price.to_i > 500 %>
+                <h1>Low</h1>
+            <% end %>
+        </div>
+        <div class="col-lg-4 col-xs-12 ">
+          <p>Likes</p>
+          <h1><%= @product.likes.count %></h1>
+        </div>
+         </div>
       </div>
     </div>
     <hr>
