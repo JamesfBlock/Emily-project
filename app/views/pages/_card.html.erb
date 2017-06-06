@@ -16,6 +16,9 @@
     <% end %>
     <div class="product-actions">
       <div class="like">
+        <p><%= product.likes.count %></p>
+      </div>
+      <div class="like-icon">
         <% if product.likes.where(user_id: @current_user).count > 0 %>
           <%= link_to(product_likes_path(product), method: :post) do %><i class="fa fa-heart-o"></i><% end %>
         <% else %>

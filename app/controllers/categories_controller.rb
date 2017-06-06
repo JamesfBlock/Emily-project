@@ -1,5 +1,4 @@
 class CategoriesController < ApplicationController
-
   def new
     @category = Category.new
   end
@@ -14,9 +13,13 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def destroy
+  end
+
   private
 
   def category_params
     params.require(:category).permit(:name)
   end
 end
+

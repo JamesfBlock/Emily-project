@@ -6,7 +6,7 @@
   <%= f.input :url %>
   <%= f.input :image_url %>
   <%= f.input :price %>
-  <%= f.input :category, collection: Category.all %>
   <%= f.input :featured %>
+  <%= f.input :category_id, collection: @category %>
   <%= f.submit class: "btn btn-primary" %>
 <% end %>
