@@ -4,8 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :products
+  has_many :products, through: :likes
   has_many :likes
+
 
   # Attachinary associations
   has_attachment :profile_picture

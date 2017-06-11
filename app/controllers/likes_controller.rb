@@ -1,18 +1,28 @@
 class LikesController < ApplicationController
+
+  def new
+    @like = Like.new
+  end
+
   def create
+    @user = current_user
     @product = Product.find(params[:product_id])
     @like = Like.new
-    @like.product = @product
-    @like.user = current_user
+    @like.product_id = @product.id
+    @like.user_id = current_user.id
     if @like.save
       redirect_to product_path(@product)
     else
-      render :new
     end
   end
 
   def destroy
+    user = current_user
+    product = Product.find(params[:product_id])
+    @like = Like.where(user_id: user.id, product_id: product.id)
+    @like_id = @like.id
     @like.destroy
+    redirect_to product_path(@product)
   end
 
   private

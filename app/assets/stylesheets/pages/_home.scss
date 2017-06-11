@@ -2,3 +2,61 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
+
+.home-banner-wrapper {
+  height: 50vh;
+  text-align: center;
+  background: #FFD651;
+  color: white;
+  p {
+    font-size: 20px;
+  }
+  h1 {
+    font-size: 60px;
+    font-weight: 300;
+  }
+}
+
+.search-banner {
+  display: flex;
+  position:relative;
+  background: #66778e;
+  padding: 15px;
+  justify-content: center;
+  text-align: center;
+  p {
+    color: white;
+    margin: 0px;
+    font-size: 20px;
+  }
+  i {
+    margin-top: 20px;
+    font-size: 20px;
+    color: white;
+  }
+}
+
+.search-title {
+  z-index: 100;
+}
+
+.room {
+  background: #f7f7f7;
+  text-align:center;
+  height: 300px;
+  color: white;
+  background: cover;
+}
+
+.room:hover {
+  opacity: 0.9;
+}
+
+.circle {
+  position: absolute;
+  background: #66778e;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  margin-top: -50px;
+}
