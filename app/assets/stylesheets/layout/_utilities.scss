@@ -34,7 +34,14 @@
   justify-content: center;
 }
 
+.flex-box-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .touching-cards {
   margin: 0px;
-  padding: 0px;
+  padding: 5px;
 }
