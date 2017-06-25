@@ -11,33 +11,14 @@
       </div>
     </div>
     <div class="product-company">
-      <p>by <%= product.company %></p>
+      <p>by <%= product.company.name %></p>
     </div>
     <% end %>
     <div class="product-actions">
       <div class="likers">
-        <div class="row">
-          <% product.users.each do |user| %>
-            <div class="col-xs-1 shift-profile-img ">
-              <div class="user-icons">
-                <% if user.profile_picture.nil? %>
-                <% else %>
-                  <%= cl_image_tag user.profile_picture.path %>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
-        </div>
+          <p>actions will go here</p>
       </div>
       <div class="like">
-        <% if product.likes.where(user_id: current_user, product_id: product).count == 1 %>
-          <%= link_to(product_likes_path(product), method: :post) do %><i class="fa fa-heart"></i><% end %>
-        <% elsif if product.likes.where(user_id: current_user, product_id: product).count == 0  %>
-          <%= link_to(product_likes_path(product), method: :post) do %><i class="fa fa-heart-o"></i><% end %>
-        <% else %>
-          <p>Login</p>
-        <% end %>
-        <% end %>
-      </div>
     </div>
   </div>
+</div>

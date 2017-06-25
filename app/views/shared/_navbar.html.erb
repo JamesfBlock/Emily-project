@@ -7,7 +7,7 @@
   <!-- Search form -->
   <div class="navbar-search hidden-xs">
     <%= form_tag products_path, method: :get do %>
-      <%= text_field_tag :term, nil, class:"navbar-search-input", placeholder: "Search for interests" %>
+      <%= text_field_tag :term, nil, class:"navbar-search-input", placeholder: "Search Products" %>
       <button type="submit" class="navbar-search-btn">
         <i class="fa fa-search"></i>
       </button>
@@ -32,7 +32,7 @@
       <div class="navbar-item">
         <div class="dropdown">
 
-          <span class="navbar-username">Hi <%= current_user.first_name %></span>
+          <span class="navbar-username">Hi <%#= current_user.first_name %></span>
 
           <%= cl_image_tag current_user.get_picture, crop: :fill, height: 30 , width: 30, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">

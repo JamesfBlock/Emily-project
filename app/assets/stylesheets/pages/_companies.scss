@@ -1,0 +1,29 @@
+.banner {
+
+  color: white;
+  background-color: black;
+  background-size: cover;
+  background-position: center center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: -70px;
+  min-height: 500px;
+  height: 60vh;
+  z-index: -1;
+  .logo {
+    margin-top: 100px;
+    background-size: cover;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+  }
+  .setting {
+    width: 500px;
+    margin: 0px;
+  }
+}
+
+

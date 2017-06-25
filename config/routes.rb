@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   resources :users, only: [:edit, :show, :update]
   get 'search', to: 'pages#search'
   root to: 'pages#home'
-  resources :categories, only: [:new, :create]
+  resources :rooms, only: [:new, :create, :show]
+  resources :companies, only: [:new, :create, :show, :edit, :update]
 
   resources :products do
     resources :likes
