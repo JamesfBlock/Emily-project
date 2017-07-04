@@ -34,16 +34,28 @@
   h1 {
     font-size: 28px;
   }
+  p {
+    visibility: hidden;
+    color: white;
+  }
 }
 
 .room:hover {
+  background: #708091;
   transform: translateY(-4px);
   box-shadow: 0px 0px 113px -42px rgba(0,0,0,0.75);
+  background-image: none !important;
+  transition-timing-function: ease-in;
+  p {
+    visibility: visible;
+    color: white;
+  }
 }
 
 .section-wrapper {
   background: #CEEAF7;
   padding-bottom: 30px;
+  min-height: 500px;
 }
 
 .category {

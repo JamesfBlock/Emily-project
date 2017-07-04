@@ -4,6 +4,11 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
     @current_user = current_user
+    if params[:term].blank?
+      @products = Product.all
+    else
+      @products = Product.where("name iLIKE :term", term: "%#{params[:term]}%")
+    end
   end
 
   def new
