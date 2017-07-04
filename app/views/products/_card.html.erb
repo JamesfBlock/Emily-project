@@ -16,7 +16,13 @@
     <% end %>
     <div class="product-actions">
       <div class="likers">
-          <p>actions will go here</p>
+        <%= link_to like_path(product), method: :post, remote: true do %>
+          <% if liked(product) %>
+            <i class="fa fa-heart"></i>
+          <% else %>
+            <i class="fa fa-heart-o"></i>
+          <% end %>
+        <% end %>
       </div>
       <div class="like">
     </div>

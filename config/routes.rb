@@ -9,9 +9,8 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :rooms, only: [:new, :create, :show]
   resources :companies, only: [:new, :create, :show, :edit, :update]
+  resources :products
 
-  resources :products do
-    resources :likes
-  end
-
+  post '/products/:id', to: 'likes#create', as: :like
+  delete '/products/:id', to: 'likes#destroy', as: :unlike
 end
