@@ -1,12 +1,11 @@
 <%= simple_form_for(@product) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :company %>
+  <%= f.input :room_id, collection: Room.all %>
+  <%= f.input :name, label: "Product Name" %>
+  <%= f.input :company_id, collection: Company.all %>
   <%= f.input :description %>
-  <%= f.input :emzy_comment %>
-  <%= f.input :url %>
+  <%= f.input :URL %>
   <%= f.input :image_url %>
   <%= f.input :price %>
   <%= f.input :featured %>
-  <%= f.input :category_id, collection: @category %>
   <%= f.submit class: "btn btn-primary" %>
 <% end %>

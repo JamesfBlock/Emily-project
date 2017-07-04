@@ -8,7 +8,8 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    @categories = Category.all
+    @rooms = Room.all
+    @companies = Company.all
   end
 
   def create
@@ -22,15 +23,16 @@ class ProductsController < ApplicationController
 
   def show
     @products = Product.all.sample(3)
-    @product = Product.find(params[:id])
+    @product = Product.friendly.find(params[:id])
+    @similar_products = @product.similar_products?
   end
 
   def edit
-    @product = Product.find(params[:id])
+    @product = Product.friendly.find(params[:id])
   end
 
-   def update
-    @product = Product.find(params[:id])
+  def update
+    @product = Product.friendly.find(params[:id])
     @product.update(product_params)
     redirect_to product_path(@product)
   end
@@ -38,7 +40,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :company, :description, :category_id, :url, :featured, :price, :image_url, :emzy_comment)
+    params.require(:product).permit(:name, :company_id, :description, :room_id, :url, :featured, :price, :image_url, :emzy_comment)
   end
 
 end

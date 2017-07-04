@@ -1,0 +1,8 @@
+<%= simple_form_for(@company) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :url, label: "Company Website" %>
+  <%= f.input :company_profile, as: :attachinary %>
+  <%= f.input :company_cover, as: :attachinary %>
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>

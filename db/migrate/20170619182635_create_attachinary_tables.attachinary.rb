@@ -2,7 +2,7 @@
 class CreateAttachinaryTables < ActiveRecord::Migration[5.1]
   def change
     create_table :attachinary_files do |t|
-      t.references :attachinariable, polymorphic: true, index: { name: "by_scoped_parent" }
+      t.references :attachinariable, polymorphic: true, index: false
       t.string :scope
 
       t.string :public_id
@@ -13,5 +13,6 @@ class CreateAttachinaryTables < ActiveRecord::Migration[5.1]
       t.string :resource_type
       t.timestamps
     end
+    add_index :attachinary_files, [:attachinariable_type, :attachinariable_id, :scope], name: 'by_scoped_parent'
   end
 end

@@ -11,12 +11,12 @@
         <div class="show-body">
           <div class="information">
             <h1><%= @product.name %></h1>
-            <p style="font-size: 14px;">by <u><%= @product.company %></u></p>
+            <p style="font-size: 14px;">by <u><%=link_to @product.company.name, company_path(@product.company.id) %></u></p>
             <hr>
             <p>Details:</p>
             <p style="font-weight: 100;"><%= @product.description %></p>
             <div class="button">
-              <%= link_to "£" + @product.price.to_s + " on " + @product.company, @product.url, class: "btn btn-warning" %>
+              <%= link_to "£" + @product.price.to_s + " on " + @product.company.name, @product.URL, class: "btn btn-warning" %>
             </div>
           </div>
         </div>
@@ -29,16 +29,16 @@
         <div class="col-lg-6 col-lg-offset-3 col-xs-12  text-center padding-top">
           <div class="col-lg-4 product-summary-image border-right full-height">
             <p>Room</p>
-              <% if @product.category_id == Category.where(name:'Bedroom').first.id  %>
-                <%= image_tag('bed.png') %>
-              <% elsif @product.category_id == Category.where(name:'Kitchen').first.id %>
-                <%= image_tag('mixer.png') %>
-              <% elsif @product.category_id == Category.where(name:'Living Room').first.id %>
-                <%= image_tag('sofa.png') %>
-              <% elsif @product.category_id == Category.where(name:'Office').first.id %>
-                <%= image_tag('desk.png') %>
-              <% elsif @product.category_id == Category.where(name:'Bathroom').first.id %>
-                <%= image_tag('bathtub.png') %>
+              <% if @product.room_id == 1 %>
+                <%= image_tag("mixer.png") %>
+              <% elsif @product.room_id == 2  %>
+                <%= image_tag("bathtub.png") %>
+              <% elsif @product.room_id == 3  %>
+                <%= image_tag("desk.png") %>
+              <% elsif @product.room_id == 4  %>
+                <%= image_tag("sofa.png") %>
+              <% elsif @product.room_id == 5  %>
+                <%= image_tag("bed.png") %>
               <% end %>
           </div>
         <div class="col-lg-4 col-xs-12 border-right">
@@ -53,19 +53,22 @@
         </div>
         <div class="col-lg-4 col-xs-12 ">
           <p>Likes</p>
-          <h1><%= @product.likes.count %></h1>
+          <h1><%#= @product.likes.count %></h1>
         </div>
          </div>
       </div>
     </div>
     <hr>
       <div class="row">
+        <% if @similar_products.count > 0 %>
         <div class="similar">
           <h2 class="text-center" style="font-size: 22px;">Similar Products</h2>
-            <% @products.each do |product| %>
-              <div class="col-lg-4 col-sm-6 col-xs-12">
-                <%= render 'card', product: product %>
-              </div>
+            <% @similar_products.each do |product| %>
+              <div class="col-md-4">
+              <%= render 'card', product: product %>
+             </div>
+            <% end %>
+            </div>
             <% end %>
           </div>
         </div>

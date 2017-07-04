@@ -10,10 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170606192511) do
+ActiveRecord::Schema.define(version: 20170619215634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "add_slug_to_companies_tables", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "attachinary_files", force: :cascade do |t|
     t.string "attachinariable_type"
@@ -27,35 +32,53 @@ ActiveRecord::Schema.define(version: 20170606192511) do
     t.string "resource_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["attachinariable_type", "attachinariable_id"], name: "by_scoped_parent"
+    t.index ["attachinariable_type", "attachinariable_id", "scope"], name: "by_scoped_parent"
   end
 
-  create_table "categories", force: :cascade do |t|
+  create_table "companies", force: :cascade do |t|
     t.string "name"
-  end
-
-  create_table "likes", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "product_id"
+    t.string "url"
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_likes_on_product_id"
-    t.index ["user_id"], name: "index_likes_on_user_id"
+    t.string "slug"
+    t.index ["slug"], name: "index_companies_on_slug", unique: true
+  end
+
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string "slug", null: false
+    t.integer "sluggable_id", null: false
+    t.string "sluggable_type", limit: 50
+    t.string "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+    t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
+    t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
   end
 
   create_table "products", force: :cascade do |t|
     t.string "name"
-    t.string "company"
-    t.string "description"
+    t.bigint "company_id"
+    t.bigint "room_id"
     t.integer "price"
-    t.string "url"
-    t.boolean "featured"
+    t.string "URL"
+    t.string "image_url"
+    t.string "featured"
+    t.string "boolean"
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image_url"
-    t.string "emzy_comment"
-    t.bigint "category_id"
-    t.index ["category_id"], name: "index_products_on_category_id"
+    t.string "slug"
+    t.index ["company_id"], name: "index_products_on_company_id"
+    t.index ["room_id"], name: "index_products_on_room_id"
+    t.index ["slug"], name: "index_products_on_slug", unique: true
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -72,13 +95,12 @@ ActiveRecord::Schema.define(version: 20170606192511) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "first_name"
-    t.string "nickname"
     t.string "last_name"
+    t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "likes", "products"
-  add_foreign_key "likes", "users"
-  add_foreign_key "products", "categories"
+  add_foreign_key "products", "companies"
+  add_foreign_key "products", "rooms"
 end

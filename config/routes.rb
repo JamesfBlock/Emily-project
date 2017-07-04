@@ -5,10 +5,12 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:edit, :show, :update]
   get 'search', to: 'pages#search'
-  root to: 'products#index'
-  resources :categories, only: [:new, :create]
+  root to: 'pages#home'
+  resources :rooms, only: [:new, :create, :show]
+  resources :companies, only: [:new, :create, :show, :edit, :update]
+
   resources :products do
-    resources :likes, only: [:create, :destroy, :update]
+    resources :likes
   end
 
 end
