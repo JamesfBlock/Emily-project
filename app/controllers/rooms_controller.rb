@@ -1,5 +1,10 @@
 class RoomsController < ApplicationController
-  def new
+    def show
+      @room = Room.friendly.find(params[:id])
+      @products = Product.where(room_id: @room.id)
+    end
+
+    def new
       @room = Room.new
     end
 
