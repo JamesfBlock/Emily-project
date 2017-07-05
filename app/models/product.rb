@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
   has_many :rooms
+  has_many :likes
   belongs_to :company
 
   # URL setup
